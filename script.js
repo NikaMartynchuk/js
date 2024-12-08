@@ -14,35 +14,36 @@ console.log(str);
 
 
 
-const cards = ['Карточка-1', 'Карточка-2', 'Карточка-3', 'Карточка-4', 'Карточка-5'];
+const cards = [
+    'Карточка-1',
+    'Карточка-2',
+    'Карточка-3',
+    'Карточка-4',
+    'Карточка-5',
+  ];
+  
 
-const cardToRemove = 'Карточка-3';
-
-const indexToRemove = cards.indexOf(cardToRemove);
-
-if (indexToRemove !== -1) {
-  cards.splice(indexToRemove, 1);
-}
-
-console.log(cards); 
-
-
-
-
-const cardToInsert = 'Карточка-6';
-const indexToInsert = 2; 
-
-cards.splice(indexToInsert, 0, cardToInsert);
-
-console.log(cards); 
-
-const cardToUpdate = 'Карточка-4';
-const newCard = ' Карточка-4';
-
-const indexToUpdate = cards.indexOf(cardToUpdate);
-
-if (indexToUpdate !== -1) {
-  cards.splice(indexToUpdate, 1, newCard);
-}
-
-console.log(cards); 
+  const cardToRemove = 'Карточка-3';
+  const cardToInsert = 'Карточка-6';
+  const insertIndex = 2; 
+  const cardToUpdate = 'Карточка-4';
+  const updatedCardValue = 'Оновлена-Карточка-4';
+  
+  for (let i = 0; i < cards.length; i++) {
+    if (cards[i] === cardToRemove) {
+      cards.splice(i, 1); 
+      i--; 
+    }
+  
+    if (cards[i] === cardToUpdate) {
+      cards[i] = updatedCardValue; 
+    }
+  
+    if (i === insertIndex - 1) { 
+      cards.splice(insertIndex, 0, cardToInsert); 
+      i++; 
+    }
+  }
+  
+  console.log(cards);
+  
