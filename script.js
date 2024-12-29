@@ -1,39 +1,64 @@
-   // Завдання 1
-   document.getElementById("helloButton").onclick = () => alert("Hello World!");
+  // Bank Account
+  let balance = 1000;
 
-   // Завдання 2
-   const randomNumber = Math.floor(Math.random() * 100) + 1;
-   document.getElementById("guessButton").onclick = () => {
-       const userGuess = Number(document.getElementById("guessField").value);
-       const result = document.getElementById("guessResult");
-       if (userGuess === randomNumber) result.textContent = "Ви вгадали!";
-       else if (userGuess < randomNumber) result.textContent = "Занадто мало!";
-       else result.textContent = "Занадто багато!";
-   };
+  function deposit() {
+      let amount = Number(document.getElementById('depositAmount').value);
+      if (amount > 0) {
+          balance += amount;
+          document.getElementById('balance').textContent = balance;
+          alert(`Рахунок поповнено. Ваш баланс: ${balance} грн`);
+      } else {
+          alert('Введіть правильну суму!');
+      }
+  }
 
-   // Завдання 3
-   let clickCounter = 0;
-   document.body.onclick = () => {
-       clickCounter++;
-       document.getElementById("clickCount").textContent = clickCounter;
-   };
+  function withdraw() {
+      let amount = Number(document.getElementById('withdrawAmount').value);
+      if (amount > 0 && amount <= balance) {
+          balance -= amount;
+          document.getElementById('balance').textContent = balance;
+          alert(`Гроші знято. Ваш баланс: ${balance} грн`);
+      } else {
+          alert('Недостатньо коштів або неправильна сума!');
+      }
+  }
 
-   // Завдання 4
-   const applyCallbackToEachElement = (arr, callback) => arr.map(callback);
-   const numbers = [1, 2, 3, 4, 5];
-   const square = (x) => x * x;
-   console.log(applyCallbackToEachElement(numbers, square)); // [1, 4, 9, 16, 25]
+  // Weather
+  function checkTemperature() {
+      let temperature = Number(document.getElementById('temperatureInput').value);
+      let message;
+      if (temperature < 0) {
+          message = 'Температура нижче 0 градусів Цельсія';
+      } else {
+          message = 'Температура вище або рівна 0 градусів Цельсія';
+      }
+      document.getElementById('temperatureMessage').textContent = message;
+  }
 
-   // Функція для розрахунку дисконтної ціни
-   const calculateDiscountedPrice = (price, discount, callback) => {
-       const discountedPrice = price - (price * discount / 100);
-       callback(discountedPrice);
-   };
+  // User
+  const correctEmail = "test@example.com";
+  const correctPassword = "12345";
 
-   // Колбек-функція для виводу результату
-   const showDiscountedPrice = (price) => {
-       console.log(`Discounted price: ${price}`);
-   };
+  function login() {
+      let email = document.getElementById('emailInput').value;
+      let password = document.getElementById('passwordInput').value;
 
-   // Використання функції
-   calculateDiscountedPrice(100, 10, showDiscountedPrice); // Discounted price: 90
+      if (email === correctEmail && password === correctPassword) {
+          document.getElementById('loginMessage').textContent = 'Успішний вхід!';
+      } else {
+          document.getElementById('loginMessage').textContent = 'Невірний email або пароль.';
+      }
+  }
+
+  // Movie
+  function checkMovieRating() {
+      let title = document.getElementById('movieTitle').value;
+      let rating = Number(document.getElementById('movieRating').value);
+      let message = `Фільм: ${title}, Рейтинг: ${rating}. `;
+      if (rating > 8) {
+          message += 'Рейтинг високий!';
+      } else {
+          message += 'Рейтинг низький.';
+      }
+      document.getElementById('movieMessage').textContent = message;
+  }

@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашнє завдання</title>
     <script src="script.js" defer></script>
-
 </head>
-
 <body>
-    <button id="helloButton">Скажи Hello!</button>
+    <h1>Домашнє завдання</h1>
 
-    <p>Вгадайте число від 1 до 100:</p>
-    <input type="text" id="guessField">
-    <button id="guessButton">Перевірити</button>
-    <p id="guessResult"></p>
+    <!-- Bank Account -->
+    <h2>Bank Account</h2>
+    <p>Ваш баланс: <span id="balance">1000</span> грн</p>
+    <input id="depositAmount" type="number" placeholder="Сума для поповнення">
+    <button onclick="deposit()">Поповнити рахунок</button><br>
+    <input id="withdrawAmount" type="number" placeholder="Сума для зняття">
+    <button onclick="withdraw()">Отримати готівку</button>
 
-    <p>Кількість кліків: <span id="clickCount">0</span></p>
+    <!-- Weather -->
+    <h2>Weather</h2>
+    <input id="temperatureInput" type="number" placeholder="Введіть температуру">
+    <button onclick="checkTemperature()">Перевірити температуру</button>
+    <p id="temperatureMessage"></p>
 
-   
+    <!-- User -->
+    <h2>User Login</h2>
+    <input id="emailInput" type="email" placeholder="Email">
+    <input id="passwordInput" type="password" placeholder="Пароль">
+    <button onclick="login()">Увійти</button>
+    <p id="loginMessage"></p>
+
+    <!-- Movie -->
+    <h2>Movie</h2>
+    <input id="movieTitle" type="text" placeholder="Назва фільму">
+    <input id="movieRating" type="number" placeholder="Рейтинг">
+    <button onclick="checkMovieRating()">Перевірити рейтинг</button>
+    <p id="movieMessage"></p>
+
 </body>
-
 </html>
