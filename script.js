@@ -13,11 +13,12 @@ user.hobby = 'skydiving'
 
 user.premium = false
 
-for ( const key in user ) {
-    console.log( key + ' : ' + user[key] );
+for (const [key, value] of Object.entries(user)) {
+  console.log(`${key} : ${value}`);
 }
 
-const keys = Object.keys( user );
+const keys = Object.keys(user);
+console.log(keys);
 
 
 //Task 2
@@ -27,6 +28,7 @@ const sampleObj = {
   job: "developer" };
 
 function countProps(obj) {
+  const { ...rest } = obj; 
   return Object.keys(obj).length;
 }
 
@@ -70,6 +72,7 @@ const salaries = {
 };
 
 function countTotalSalary(employees) {
+  const { ...rest } = employees;
   return Object.values(employees).reduce((total, salary) => total + salary, 0);
 }
 console.log(countTotalSalary(salaries));
@@ -83,17 +86,8 @@ const products = [
   { name: "Tablet", price: 600, quantity: 15 },
 ];
 function getAllPropValues(arr, prop) {
-  const values = [];
-
-  for (const item of arr) {
-    if (prop in item) {
-      values.push(item[prop]);
-    }
-  }
-
-  return values;
+  return arr.map(({ [prop]: value }) => value).filter(value => value !== undefined);
 }
-
 
 
 console.log(getAllPropValues(products, "name"));
@@ -110,18 +104,13 @@ const product = [
 ];
 
 function calculateTotalPrice(allProducts, productName) {
-  let totalPrice = 0;
-
-  for (const product of allProducts) {
-    if (product.name === productName) {
-      totalPrice = product.price * product.quantity;
-      break; 
+  for (const { name, price, quantity } of allProducts) {
+    if (name === productName) {
+      return price * quantity;
     }
   }
-
-  return totalPrice;
+  return 0;
 }
-
 
 
 console.log(calculateTotalPrice(product, "Phone")); 
@@ -165,7 +154,9 @@ const account = {
   },
 
   getTransactions() {
-    console.log("Транзакції:", this.transactions);
+    for (const { type, amount } of this.transactions) {
+      console.log(`Тип: ${type}, Сума: ${amount}`);
+    }
     return this.transactions;
   },
 };
