@@ -1,167 +1,127 @@
+const users = [
+  {
+    id: '701b29c3-b35d-4cf1-a5f6-8b12b29a5081',
+    name: 'Moore Hensley',
+    email: 'moorehensley@indexia.com',
+    eyeColor: 'blue',
+    friends: ['Sharron Pace'],
+    isActive: false,
+    balance: 2811,
+    skills: ['ipsum', 'lorem'],
+    gender: 'male',
+    age: 37,
+  },
+  {
+    id: '7a3cbd18-57a1-4534-8e12-1caad921bda1',
+    name: 'Sharlene Bush',
+    email: 'sharlenebush@tubesys.com',
+    eyeColor: 'blue',
+    friends: ['Briana Decker', 'Sharron Pace'],
+    isActive: true,
+    balance: 3821,
+    skills: ['tempor', 'mollit', 'commodo', 'veniam', 'laborum'],
+    gender: 'female',
+    age: 34,
+  },
+  {
+    id: '88beb2f3-e4c2-49f3-a0a0-ecf957a95af3',
+    name: 'Ross Vazquez',
+    email: 'rossvazquez@xinware.com',
+    eyeColor: 'green',
+    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+    isActive: false,
+    balance: 3793,
+    skills: ['nulla', 'anim', 'proident', 'ipsum', 'elit'],
+    gender: 'male',
+    age: 24,
+  },
+  {
+    id: '249b6175-5c30-44c6-b154-f120923736f5',
+    name: 'Elma Head',
+    email: 'elmahead@omatom.com',
+    eyeColor: 'green',
+    friends: ['Goldie Gentry', 'Aisha Tran'],
+    isActive: true,
+    balance: 2278,
+    skills: ['adipisicing', 'irure', 'velit'],
+    gender: 'female',
+    age: 21,
+  },
+  {
+    id: '334f8cb3-eb04-45e6-abf4-4935dd439b70',
+    name: 'Carey Barr',
+    email: 'careybarr@nurali.com',
+    eyeColor: 'blue',
+    friends: ['Jordan Sampson', 'Eddie Strong'],
+    isActive: true,
+    balance: 3951,
+    skills: ['ex', 'culpa', 'nostrud'],
+    gender: 'male',
+    age: 27,
+  },
+  {
+    id: '150b00fb-dd82-427d-9faf-2879ea87c695',
+    name: 'Blackburn Dotson',
+    email: 'blackburndotson@furnigeer.com',
+    eyeColor: 'brown',
+    friends: ['Jacklyn Lucas', 'Linda Chapman'],
+    isActive: false,
+    balance: 1498,
+    skills: ['non', 'amet', 'ipsum'],
+    gender: 'male',
+    age: 38,
+  },
+  {
+    id: 'e1bf46ab-7168-491e-925e-f01e21394812',
+    name: 'Sheree Anthony',
+    email: 'shereeanthony@kog.com',
+    eyeColor: 'brown',
+    friends: ['Goldie Gentry', 'Briana Decker'],
+    isActive: true,
+    balance: 2764,
+    skills: ['lorem', 'veniam', 'culpa'],
+    gender: 'female',
+    age: 39,
+  },
+];
 
 
-// Task 1
-const user = {
-  name: 'Nika',
-  hobby: 'art',
-  premium: true,
-};
 
-user.mood = 'happy'
 
-user.hobby = 'skydiving'
 
-user.premium = false
 
-for (const [key, value] of Object.entries(user)) {
-  console.log(`${key} : ${value}`);
-}
 
-const keys = Object.keys(user);
-console.log(keys);
 
+
+
+
+
+//Task 1
+
+const names = users.map(user => user.name);
+console.log(names);
 
 //Task 2
-const sampleObj = { 
-  name: "John",
-  age: 30, 
-  job: "developer" };
 
-function countProps(obj) {
-  const { ...rest } = obj; 
-  return Object.keys(obj).length;
-}
+const getUsersByEyeColor = (eyeColor) => users.filter(user => user.eyeColor === eyeColor);
+console.log(getUsersByEyeColor('blue')); 
 
-console.log(countProps(sampleObj)); 
+//TTask 3
 
+const getUsersByGender = (gender) => users.filter(user => user.gender === gender).map(user => user.name);
+console.log(getUsersByGender('male')); 
 
+//task 4
 
-//Task 3
-const employees = { 
-  John: 50, 
-  Ann: 75, 
-  Mike: 100, 
-  Sarah: 85 
-};
+const inactiveUsers = users.filter(user => !user.isActive);
+console.log(inactiveUsers);
 
+//Task 5
 
-function findBestEmployee(employees) {
-  let maxTasks = 0;
-  let bestEmployee = "";
-
-  for (const [name, tasks] of Object.entries(employees)) {
-    if (tasks > maxTasks) {
-      maxTasks = tasks;
-      bestEmployee = name;
-    }
-  }
-  return bestEmployee;
-}
-
-
-console.log(findBestEmployee(employees)); 
-
-
-
-
-//Task 4
-const salaries = { 
-  John: 500, 
-  Ann: 750, 
-  Mike: 1000 
-};
-
-function countTotalSalary(employees) {
-  const { ...rest } = employees;
-  return Object.values(employees).reduce((total, salary) => total + salary, 0);
-}
-console.log(countTotalSalary(salaries));
-
-
-
-//5
-const products = [
-  { name: "Laptop", price: 1500, quantity: 10 },
-  { name: "Phone", price: 800, quantity: 20 },
-  { name: "Tablet", price: 600, quantity: 15 },
-];
-function getAllPropValues(arr, prop) {
-  return arr.map(({ [prop]: value }) => value).filter(value => value !== undefined);
-}
-
-
-console.log(getAllPropValues(products, "name"));
-console.log(getAllPropValues(products, "price")); 
-console.log(getAllPropValues(products, "quantity")); 
-console.log(getAllPropValues(products, "color")); 
-
+const getUserByEmail = (email) => users.find(user => user.email === email);
+console.log(getUserByEmail('rossvazquez@xinware.com')); 
 
 //Task 6
-const product = [
-  { name: "Laptop", price: 1500, quantity: 10 },
-  { name: "Phone", price: 800, quantity: 20 },
-  { name: "Tablet", price: 600, quantity: 15 },
-];
 
-function calculateTotalPrice(allProducts, productName) {
-  for (const { name, price, quantity } of allProducts) {
-    if (name === productName) {
-      return price * quantity;
-    }
-  }
-  return 0;
-}
-
-
-console.log(calculateTotalPrice(product, "Phone")); 
-console.log(calculateTotalPrice(product, "Tablet")); 
-console.log(calculateTotalPrice(product, "Laptop")); 
-console.log(calculateTotalPrice(product, "Monitor"));
-
-
-
-//Task 7
-
-const account = {
-  balance: 0,
-  transactions: [],
-
-  deposit(amount) {
-    if (amount > 0) {
-      this.balance += amount;
-      this.transactions.push({ type: "deposit", amount });
-      console.log(`Внесено: ${amount}. Баланс: ${this.balance}`);
-    } else {
-      console.log("Сума повинна бути більше нуля.");
-    }
-  },
-
-  withdraw(amount) {
-    if (amount > this.balance) {
-      console.log("Недостатньо коштів.");
-    } else if (amount > 0) {
-      this.balance -= amount;
-      this.transactions.push({ type: "withdraw", amount });
-      console.log(`Знято: ${amount}. Баланс: ${this.balance}`);
-    } else {
-      console.log("Сума повинна бути більше нуля.");
-    }
-  },
-
-  getBalance() {
-    console.log(`Баланс: ${this.balance}`);
-    return this.balance;
-  },
-
-  getTransactions() {
-    for (const { type, amount } of this.transactions) {
-      console.log(`Тип: ${type}, Сума: ${amount}`);
-    }
-    return this.transactions;
-  },
-};
-
-account.deposit(1000); 
-account.withdraw(300); 
-account.getBalance(); 
-account.getTransactions();
+const getUsersByAgeRange = (min, max) => users.filter(user => user.age >= min && user.age <= max);
+console.log(getUsersByAgeRange(25, 35)); 
