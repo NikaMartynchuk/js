@@ -1,3 +1,5 @@
+
+
 const users = [
   {
     id: '701b29c3-b35d-4cf1-a5f6-8b12b29a5081',
@@ -86,42 +88,34 @@ const users = [
 ];
 
 
+//Отримати загальну суму балансу (поле balance) всіх користувачів.
+
+const totalBalance = users.reduce((sum, user) => sum + user.balance, 0);
+console.log(totalBalance); 
 
 
+//Масив імен всіх користувачів у яких є друг із зазначеним ім'ям.
+
+const getUsersWithFriend = (friendName) =>
+  users
+    .filter(user => user.friends.includes(friendName))
+    .map(user => user.name);
+
+console.log(getUsersWithFriend('Sharron Pace'));
+
+//Масив імен (поле name) людей, відсортованих в залежності від кількості їх друзів (поле friends)
+
+const sortedByFriendsCount = users
+  .sort((a, b) => a.friends.length - b.friends.length)
+  .map(user => user.name);
+
+console.log(sortedByFriendsCount);
 
 
+//Завдання 4 тримати масив всіх умінь всіх користувачів (поле skills), при цьому не має бути повторюваних умінь і вони повинні бути відсортовані в алфавітному порядку.
 
+const uniqueSkills = Array.from(
+  new Set(users.flatMap(user => user.skills))
+).sort();
 
-
-
-
-
-//Task 1
-
-const names = users.map(user => user.name);
-console.log(names);
-
-//Task 2
-
-const getUsersByEyeColor = (eyeColor) => users.filter(user => user.eyeColor === eyeColor);
-console.log(getUsersByEyeColor('blue')); 
-
-//TTask 3
-
-const getUsersByGender = (gender) => users.filter(user => user.gender === gender).map(user => user.name);
-console.log(getUsersByGender('male')); 
-
-//task 4
-
-const inactiveUsers = users.filter(user => !user.isActive);
-console.log(inactiveUsers);
-
-//Task 5
-
-const getUserByEmail = (email) => users.find(user => user.email === email);
-console.log(getUserByEmail('rossvazquez@xinware.com')); 
-
-//Task 6
-
-const getUsersByAgeRange = (min, max) => users.filter(user => user.age >= min && user.age <= max);
-console.log(getUsersByAgeRange(25, 35)); 
+console.log(uniqueSkills); 
