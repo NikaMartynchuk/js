@@ -1,65 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+
+       <!DOCTYPE html>
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Об'єкти</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Домашнє завдання</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <style>
-        #gallery {
-            display: flex;
-            gap: 10px;
-            list-style: none;
-        }
-    </style>
-</head>
-<body>
-    <!-- Завдання 1 -->
-    <ul id="categories">
-        <li class="item">
-            <h2>Тварини</h2>
-            <ul>
-                <li>Кіт</li>
-                <li>Хом'як</li>
-                <li>Кінь</li>
-                <li>Папуга</li>
-            </ul>
-        </li>
-        <li class="item">
-            <h2>Продукти</h2>
-            <ul>
-                <li>Хліб</li>
-                <li>Петрушка</li>
-                <li>Сир</li>
-            </ul>
-        </li>
-        <li class="item">
-            <h2>Технології</h2>
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node</li>
-            </ul>
-        </li>
-    </ul>
 
-    <!-- Завдання 2 -->
-    <ul id="ingredients"></ul>
+ 
+  <h2>Завдання 1: Слайдер зі зміною масштабу зображення</h2>
+  <div class="slider">
+    <input type="range" min="1" max="100" value="50" class="slider__input" />
+    <img src="istockphoto-517188688-1024x1024.jpg" alt="Фото" class="slider__image" />
+  </div>
 
-    <!-- Завдання 3 -->
-    <ul id="gallery"></ul>
+  <h2>Завдання 2: Плавне переміщення блоку мишею</h2>
+  <div id="box"></div>
 
-    <!-- Завдання 4 -->
-    <div id="counter">
-        <button type="button" data-action="decrement">-1</button>
-        <span id="value">0</span>
-        <button type="button" data-action="increment">+1</button>
-    </div>
-
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="script.js"></script>
 </body>
+</html>
