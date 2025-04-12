@@ -1,24 +1,23 @@
-
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Домашнє завдання</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ліниве завантаження зображень</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
- 
-  <h2>Завдання 1: Слайдер зі зміною масштабу зображення</h2>
-  <div class="slider">
-    <input type="range" min="1" max="100" value="50" class="slider__input" />
-    <img src="istockphoto-517188688-1024x1024.jpg" alt="Фото" class="slider__image" />
+  <h1>Галерея з лінивим завантаженням</h1>
+  <div class="gallery">
+    <img class="lazy" data-src="photo.jpg" alt="Зображення 1">
+    <img class="lazy" data-src="photo.jpg" alt="Зображення 2">
+    <img class="lazy" data-src="photo.jpg" alt="Зображення 3">
+    <img class="lazy" data-src="photo.jpg" alt="Зображення 4">
+    <img class="lazy" data-src="photo.jpg" alt="Зображення 5">
   </div>
 
-  <h2>Завдання 2: Плавне переміщення блоку мишею</h2>
-  <div id="box"></div>
+  <button id="loadImages">Завантажити всі зображення</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,23 +1,40 @@
-// Завдання 1: Слайдер масштабу
-const slider = document.querySelector('.slider__input');
-const image = document.querySelector('.slider__image');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
 
-const updateImageScale = _.debounce((value) => {
-  const scale = value / 50; 
-  image.style.transform = `scale(${scale})`;
-}, 100);
+      if (!img.src) {
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.classList.add('loaded');
+        };
+      }
 
-slider.addEventListener('input', (e) => {
-  updateImageScale(e.target.value);
+      obs.unobserve(img);
+    }
+  });
+}, {
+  rootMargin: '0px', 
+  threshold: 0.1
 });
 
-const box = document.getElementById('box');
+const lazyImages = document.querySelectorAll('img.lazy');
 
-const moveBox = _.debounce((x, y) => {
-  box.style.left = x + 'px';
-  box.style.top = y + 'px';
-}, 10);
-
-document.addEventListener('mousemove', (e) => {
-  moveBox(e.clientX, e.clientY);
+lazyImages.forEach(img => {
+  observer.observe(img);
 });
+
+const loadBtn = document.getElementById('loadImages');
+if (loadBtn) {
+  loadBtn.addEventListener('click', () => {
+    lazyImages.forEach(img => {
+      if (!img.src) {
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.classList.add('loaded');
+        };
+        observer.unobserve(img); // Якщо користувач вирішив завантажити вручну
+      }
+    });
+  });
+}
